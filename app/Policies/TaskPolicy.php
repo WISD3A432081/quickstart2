@@ -16,8 +16,17 @@ class TaskPolicy
      *
      * @return void
      */
-    public function destroy(User $user, Task $task)
+    /**
+     * 移除給定的任務。
+     *
+     * @param  Request  $request
+     * @param  Task  $task
+     * @return Response
+     */
+    public function destroy(Request $request, Task $task)
     {
-        return $user->id === $task->user_id;
+        $this->authorize('destroy', $task);
+
+        // 刪除該任務...
     }
 }
