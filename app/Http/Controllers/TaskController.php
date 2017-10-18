@@ -45,5 +45,8 @@ class TaskController extends Controller
 
         // Create The Task...
     }
-
+    public function destroy(Request $request, Task $task)
+    {
+        //
+    }
 }
