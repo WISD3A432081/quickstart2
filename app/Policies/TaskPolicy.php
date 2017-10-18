@@ -25,10 +25,7 @@ class TaskPolicy
      */
     public function destroy(Request $request, Task $task)
     {
-        $this->authorize('destroy', $task);
-        $task->delete();
-
-        return redirect('/tasks');
+        return $user->id === $task->user_id;
 
         // 刪除該任務...
     }
