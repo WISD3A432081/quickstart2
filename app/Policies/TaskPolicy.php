@@ -1,32 +1,30 @@
 <?php
-
 namespace App\Policies;
-
 use App\User;
 use App\Task;
 use Illuminate\Auth\Access\HandlesAuthorization;
-
-
 class TaskPolicy
 {
     use HandlesAuthorization;
-
     /**
      * Create a new policy instance.
      *
      * @return void
      */
+//    public function __construct()
+//    {
+//        //
+//    }
+//
     /**
-     * 移除給定的任務。
+     * 判斷當給定的使用者可以刪除給定的任務。
      *
-     * @param  Request  $request
+     * @param  User  $user
      * @param  Task  $task
-     * @return Response
+     * @return bool
      */
-    public function destroy(Request $request, Task $task)
+    public function destroy(User $user, Task $task)
     {
         return $user->id === $task->user_id;
-
-        // 刪除該任務...
     }
 }
